@@ -13,7 +13,7 @@ if root_path not in sys.path:
 
 # Get the relative path of the root directory with respect to the current working directory
 ROOT = root_path.relative_to(Path.cwd())
-st.write("Saranya",ROOT)
+
 
 # Sources
 IMAGE = 'Image'
