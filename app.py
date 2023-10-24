@@ -93,6 +93,8 @@ if source_radio == settings.IMAGE:
                 except Exception as ex:
                     # st.write(ex)
                     st.write("No image is uploaded yet!")
+else:
+    st.error("Please select a valid source type!")
 """
 elif source_radio == settings.VIDEO:
     helper.play_stored_video(confidence, model)
@@ -106,5 +108,4 @@ elif source_radio == settings.RTSP:
 elif source_radio == settings.YOUTUBE:
     helper.play_youtube_video(confidence, model)
 """
-else:
-    st.error("Please select a valid source type!")
+
