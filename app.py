@@ -11,25 +11,8 @@ from ultralytics import YOLO
 import time
 import cv2
 import settings
-def load_model(model_path):
-    """
-    Loads a YOLO object detection model from the specified model_path.
 
-    Parameters:
-        model_path (str): The path to the YOLO model file.
 
-    Returns:
-        A YOLO object detection model.
-    """
-    model = YOLO(model_path)
-    return model
-# Setting page layout
-st.set_page_config(
-    page_title="Object Detection using YOLOv8",
-    page_icon="🤖",
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
 
 # Main page heading
 st.title("Object Detection using YOLOv8")
@@ -52,7 +35,7 @@ elif model_type == 'Segmentation':
 
 # Load Pre-trained ML Model
 try:
-    model = load_model(model_path)
+    model = YOLO(model_path)
 except Exception as ex:
     st.error(f"Unable to load model. Check the specified path: {model_path}")
     st.error(ex)
