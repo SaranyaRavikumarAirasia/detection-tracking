@@ -48,14 +48,9 @@ source_img = st.sidebar.file_uploader(
         "Choose an image...", type=("jpg", "jpeg", "png", 'bmp', 'webp'))
 col1, col2 = st.columns(2)
 with col1:
-    try:
-        uploaded_image = PIL.Image.open(source_img)
-        st.image(source_img, caption="Uploaded Image",
+    uploaded_image = PIL.Image.open(source_img)
+    st.image(source_img, caption="Uploaded Image",
                          use_column_width=True)
-    except Exception as ex:
-        st.error("Error occurred while opening the image.")
-        st.error(ex)
-
 with col2:
     if st.sidebar.button('Detect Objects'):
         res = model.predict(uploaded_image,
