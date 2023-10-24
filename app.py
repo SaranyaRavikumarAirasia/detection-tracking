@@ -15,20 +15,20 @@ import settings
 
 
 # Main page heading
-st.title("Object Detection using YOLOv8")
+st.title("Object Detection and Image Segementation using YOLOv8 in Python")
 
 # Sidebar
-st.sidebar.header("ML Model Config")
+st.sidebar.header("Machine Learning Model Configuration")
 
 # Model Options
 model_type = st.sidebar.radio(
-    "Select Task", ['Detection', 'Segmentation'])
+    "Select the Task", ['Object Detection', 'Segmentation'])
 
 confidence = float(st.sidebar.slider(
-    "Select Model Confidence", 25, 100, 40)) / 100
+    "Select Model Confidence Score", 25, 100, 40)) / 100
 
 # Selecting Detection Or Segmentation
-if model_type == 'Detection':
+if model_type == 'Object Detection':
     model_path = Path(settings.DETECTION_MODEL)
 elif model_type == 'Segmentation':
     model_path = Path(settings.SEGMENTATION_MODEL)
@@ -58,11 +58,5 @@ with col2:
         res_plotted = res[0].plot()[:, :, ::-1]
         st.image(res_plotted, caption='Detected Image',
                          use_column_width=True)
-        try:
-            with st.expander("Detection Results"):
-                for box in boxes:
-                    st.write(box.data)
-        except Exception as ex:
-            # st.write(ex)
-            st.write("No image is uploaded yet!")
+        
 
